@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Transactions{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Transactions</h1>
+  {% if transactions %}
+  <table>
+    <tr>
+      <th>ID</th><th>Date</th><th>Type</th><th>Category</th><th>Note</th><th>Amount</th>
+    </tr>
+    {% for t in transactions %}
+    <tr>
+      <td style="color: var(--muted);">{{ t.id }}</td>
+      <td>{{ t.date }}</td>
+      <td>
+        <span class="badge {{ 'badge-income' if t.t_type == 'Income' else 'badge-expense' }}">{{ t.t_type }}</span>
+      </td>
+      <td>{{ t.category }}</td>
+      <td>{{ t.note }}</td>
+      <td class="amount">{{ "%.2f"|format(t.amount) }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty-state">No transactions yet. <a href="/add">Add one</a>.</p>
+  {% endif %}
+</div>
+{% endblock %}

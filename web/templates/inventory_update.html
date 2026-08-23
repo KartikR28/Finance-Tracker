@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Update Stock{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Update Stock</h1>
+  {% if error %}
+    <div class="alert">{{ error }}</div>
+  {% endif %}
+  <form method="post">
+    <div class="field">
+      <label>Category</label>
+      <select name="category">
+        {% for c in categories %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label>Size</label>
+      <select name="size">
+        {% for s in sizes %}
+        <option value="{{ s }}">{{ s }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label>Quantity in stock</label>
+      <input type="number" min="0" step="1" name="quantity" placeholder="e.g. 40" required>
+    </div>
+    <button type="submit" class="btn">Save</button>
+  </form>
+</div>
+{% endblock %}

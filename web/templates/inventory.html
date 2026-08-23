@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Inventory{% endblock %}
+{% block content %}
+<div class="card">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+    <h1 style="margin:0;">Inventory</h1>
+    <a href="/inventory/update" class="btn">Update Stock</a>
+  </div>
+  <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th>Category</th>
+        {% for size in sizes %}
+        <th style="text-align:right;">{{ size }}</th>
+        {% endfor %}
+      </tr>
+      {% for row in table %}
+      <tr>
+        <td>{{ row.category }}</td>
+        {% for qty in row.cells %}
+        <td class="amount" style="{{ 'color: var(--muted);' if qty == 0 else '' }}">{{ qty }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}
