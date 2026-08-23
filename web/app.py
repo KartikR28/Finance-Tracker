@@ -10,6 +10,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io, base64
 from flasgger import Swagger
+from dotenv import load_dotenv
+load_dotenv()
+
 
 from db import (
     get_conn, insert_transaction, fetch_all, fetch_one,
@@ -22,7 +25,7 @@ from inventory import (
 from auth import init_auth_db, verify_user
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret-key-change-me")
+app.secret_key = os.environ["FLASK_SECRET_KEY"]
 app.config['SWAGGER'] = {'title': 'Finance Tracker API', 'uiversion': 3}
 Swagger(app)
 
