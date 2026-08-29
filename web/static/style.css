@@ -165,6 +165,18 @@ form input, form select {
   font-size: 0.95rem;
 }
 
+form label.show-password {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+form label.show-password input[type="checkbox"] {
+  width: auto;
+}
+
 form input:focus, form select:focus {
   outline: none;
   border-color: var(--accent);

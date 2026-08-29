@@ -13,6 +13,7 @@ def init_auth_db():
         """)
 
 def create_user(username, password):
+    username = username.strip().lower()
     with get_conn() as conn:
         conn.execute(
             "INSERT INTO users (username, password_hash) VALUES (?, ?)",
@@ -20,6 +21,7 @@ def create_user(username, password):
         )
 
 def verify_user(username, password):
+    username = username.strip().lower()
     with get_conn() as conn:
         row = conn.execute(
             "SELECT * FROM users WHERE username = ?", (username,)
