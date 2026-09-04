@@ -126,5 +126,4 @@ Swagger documentation is available through the Flask app.
 ## Notes
 
 - The local SQLite database is stored as `finance.db`.
-- Transaction dates use ISO format, for example `2026-09-02`.
 - Inventory stock is tracked for predefined product categories and sizes.
